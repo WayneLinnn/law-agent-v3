@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-serif: "SimSun", "Songti SC", "Noto Serif SC", serif;
+  --color-background: #f3f5f6;
+  --color-surface: #ffffff;
+  --color-foreground: #162d3d;
+  --color-nav: #162d3d;
+  --color-rail: #f3f5f6;
+  --color-aside: #f5f8fa;
+  --color-action: #245e7a;
+  --color-agent: #0f766e;
+  --color-line: #d7e0e6;
+  --color-muted: #5c6b76;
+  --color-seal: #b35b10;
+  --color-done: #245e7a;
+}
+
+@layer base {
+  a {
+    color: var(--color-action);
+    text-underline-offset: 2px;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+button {
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 0.7rem;
+  background: #ffffff;
+  color: inherit;
+  padding: 0.55rem 0.75rem;
+}
+
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--color-action);
+}
+
+input[type="file"] {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-action) 45%, transparent);
+  outline-offset: 1px;
+}
+
+#ask-box {
+  border: 1px solid #b7c6d0;
+  background: #f7fafb;
+}
+
+.panel {
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: var(--color-surface);
+  box-shadow: 0 1px 2px rgb(22 45 61 / 0.04);
+}
+
+select {
+  font: inherit;
+  border: 1px solid var(--color-line);
+  border-radius: 0.7rem;
+  background: #ffffff;
+  color: inherit;
+}
+
+summary {
+  cursor: pointer;
+}
+
+.reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.reveal[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.reveal-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  button,
+  summary,
+  input,
+  textarea,
+  select {
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease,
+      outline-color 160ms ease;
+  }
+
+  .reveal {
+    transition: grid-template-rows 180ms ease;
+  }
+
+  .msg-in {
+    animation: rise 180ms ease;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

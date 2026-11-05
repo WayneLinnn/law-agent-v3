@@ -1,0 +1,16 @@
+/node_modules
+/.next/
+/out/
+/data
+/data/
+.env
+.env.*
+!.env.example
+.cursor/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+npm-debug.log*
